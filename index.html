@@ -21,7 +21,7 @@
       border-radius: 24px;
       box-shadow: 0 12px 30px rgba(0,0,0,0.15);
       max-width: 420px;
-      width: 100%;
+      width: 90%;
       padding: 24px;
       text-align: center;
       animation: fadeIn 1.2s ease-in-out;
@@ -37,7 +37,7 @@
     }
 
     h1 {
-      font-size: 28px;
+      font-size: 24px;
       margin: 10px 0;
       color: #ff6b81;
     }
@@ -54,6 +54,7 @@
       justify-content: center;
       margin-top: 20px;
       gap: 16px;
+      flex-wrap: wrap;
     }
 
     button {
@@ -88,8 +89,10 @@
 <body>
   <div class="card">
     <!-- Cute Apology GIF -->
-     <div class="tenor-gif-embed" data-postid="7710120082388174990" data-share-method="host" data-aspect-ratio="0.975904" data-width="100%"><a href="https://tenor.com/view/sorry-gif-7710120082388174990">Sorry GIF</a>from <a href="https://tenor.com/search/sorry-gifs">Sorry GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
-    <!-- <img src="https://media.giphy.com/media/26AHONQ79FdWZhAI0/giphy.gif" alt="Cute Sorry Gif"> -->
+    <div class="tenor-gif-embed" data-postid="7710120082388174990" data-share-method="host" data-aspect-ratio="0.975904" data-width="100%">
+      <a href="https://tenor.com/view/sorry-gif-7710120082388174990">Sorry GIF</a>
+    </div>
+    <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
     
     <h1>I'm Really Sorry 🥺</h1>
     <p>Please forgive me bebe, I’ll make it up to you promisee 🥺 <br> Will you accept my apology? 💖</p>
@@ -104,20 +107,22 @@
     const noBtn = document.getElementById('noBtn');
     const card = document.querySelector('.card');
 
-    noBtn.addEventListener('mouseover', () => {
+    function moveNoBtn() {
       const cardRect = card.getBoundingClientRect();
       const btnRect = noBtn.getBoundingClientRect();
 
-      // Random new position inside card
       const offsetX = Math.random() * (cardRect.width - btnRect.width - 20);
       const offsetY = Math.random() * (cardRect.height - btnRect.height - 20);
 
-      noBtn.style.position = "absolute"; // make it float after hover
       noBtn.style.left = offsetX + "px";
       noBtn.style.top = offsetY + "px";
-    });
+    }
+
+    // Works on desktop hover
+    noBtn.addEventListener('mouseover', moveNoBtn);
+    // Works on mobile tap
+    noBtn.addEventListener('click', moveNoBtn);
+    noBtn.addEventListener('touchstart', moveNoBtn);
   </script>
 </body>
 </html>
-
-
